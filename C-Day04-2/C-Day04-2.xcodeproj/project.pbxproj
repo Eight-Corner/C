@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		5B1041702547E5AB00806712 /* C-Day04-2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "C-Day04-2"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B1041732547E5AB00806712 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		5B1041732547E5AB00806712 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = "C-Day04-2/main.c"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +41,7 @@
 		5B1041672547E5AB00806712 = {
 			isa = PBXGroup;
 			children = (
-				5B1041722547E5AB00806712 /* C-Day04-2 */,
+				5B1041732547E5AB00806712 /* main.c */,
 				5B1041712547E5AB00806712 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,14 +52,6 @@
 				5B1041702547E5AB00806712 /* C-Day04-2 */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5B1041722547E5AB00806712 /* C-Day04-2 */ = {
-			isa = PBXGroup;
-			children = (
-				5B1041732547E5AB00806712 /* main.c */,
-			);
-			path = "C-Day04-2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
