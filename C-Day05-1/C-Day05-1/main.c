@@ -38,17 +38,17 @@ int main(int argc, const char * argv[]) {
     char ch_val = 'a';
     
     int arr[5] = {1,2,3,4,5};
-    
+    printf("-----1---------\n");
     printf("%d\n", &int_val); // & 변수의 주소를 찍기위함
     printf("%d\n", &dou_val);
     printf("%d\n", &ch_val); // 결과 값은 컴퓨터마다 다르기 때문에 주소가 다르게 나올 수 있다.
     
-    printf("\n-배열의 주소-\n");
-    printf("%d\n", &arr[0]);
-    printf("%d\n", &arr[1]);
-    printf("%d\n", &arr[2]);
-    printf("%d\n", &arr[3]);
-    printf("%d\n", &arr[4]);
+    printf("\n-arr 배열의 주소-\n");
+    printf("%d[0번]\n", &arr[0]);
+    printf("%d[1번]\n", &arr[1]);
+    printf("%d[2번]\n", &arr[2]);
+    printf("%d[3번]\n", &arr[3]);
+    printf("%d[4번]\n", &arr[4]);
     // 결과 값
 //    -배열의 주소-
 //    -272632528
@@ -59,15 +59,40 @@ int main(int argc, const char * argv[]) {
 //   배열안에 있는 데이터 값이 4씩 줄어든 규칙을 알 수 있다.
 //    배열의 특징 : 같은 자료형을 저장하고, 연속해서 저장한다.
 //    4칸씩 차이가 나는 이유 : int 자료형은 4byte이기 때문이다.
-    printf("배열명 주소 : %d\n", arr); // 배열 명은 배열의 0열의 주소값
+    printf("arr의 배열명 주소 : %d\n", arr); // 배열 명은 배열의 0열의 주소값
 //    arr == arr[0]의 주소와 같다. ||| 배열명 == 배열명[0]
     
 // 배열을 저장하고 싶다면 변수에 담으면 된다.
     
     // 주소가 들어갈 변수 : 포인터 변수 == 주소를 담을 변수
-    int *int_address; // * 은 포인터 변수라는 뜻
+    int *p_int_val; // * 은 포인터 변수라는 뜻
     // 주소가 정수라는 뜻 보다는, 이 변수의 주소 값이 정수라는 숫자가 들어가있다.
-    int *double_adress; // 
+    double *p_dou_val; //
+    char *p_ch_val; //
     
+    // 변수에 값을 넣기
+    p_int_val = &int_val; // &int_val 주소를 포인터 변수에 넣겠다.
+    p_dou_val = &dou_val;
+    p_ch_val = &ch_val;
+    printf("---2--\n");
+    printf("%d %d\n", &int_val, p_int_val); //
+    printf("%d %d\n", &dou_val, p_dou_val);
+    printf("%d %d\n", &ch_val, p_ch_val); //  .
+    
+    
+    // 일반 변수에 포인터 주소를 넣어보기
+    printf("일반 변수에 포인터 주소를 넣어보기\n");
+    int int_val2; // 일반 변수를 선언
+    int_val2 = &int_val; // 일반 변수에  &포인터 넣기
+    printf("%d \n", int_val2); // 원래는 안된다는데,,, 컴파일하고 실행하는데 오류or문제발생이 되지않는다면 괜찮은거 아닌가?..
+    
+    // 크기 찍어보기
+    printf("2번의 크기 찍어보기 ----\n");
+    printf("%d %d\n", sizeof(&int_val), sizeof(p_int_val)); //
+    printf("%d %d\n", sizeof(&dou_val), sizeof(p_dou_val));
+    printf("%d %d\n", sizeof(&ch_val), sizeof(p_ch_val)); //
+    // 결과 : 8  ==> 64bit 운영체제를 쓰기 때문에 8byte가 나온다.
+    // 주소의 크기는 같다. (size) 주소는 무엇을 담든 상관없이 주소의 크기는 8byte로 세팅 되어 있다.
+    // 어떤 자료형을 갖고 있던 주소의 크기는 8byte.
     
 }
