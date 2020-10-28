@@ -51,7 +51,8 @@ int main(int argc, const char * argv[]) {
     int total = 0;
     
     swap(ptr1,ptr2);
-    printf(" %d %d ",num1,num2);
+    printf("<swap함수> %d %d \n",num1,num2);
+    // 20 10 , num1 과 num2를 교환
     
     total = sum(num1,num2);
     printf("\n %d", total);
@@ -61,8 +62,12 @@ int main(int argc, const char * argv[]) {
 }
 // 합수 정의
 void swap (int *sw_pnum1, int *sw_pnum2){
-    printf("주소 : %d | %d \n", sw_pnum1, sw_pnum2); // call by address
-    printf("값 : %d | %d \n", *sw_pnum1, *sw_pnum2); // call by value
+//    printf("주소 : %d | %d \n", sw_pnum1, sw_pnum2); // call by address
+//    printf("값 : %d | %d \n", *sw_pnum1, *sw_pnum2); // call by value
+    int tmp; // 잠시 가지고 있을 저장변수
+    tmp = *sw_pnum2;
+    *sw_pnum2 = *sw_pnum1;
+    *sw_pnum1 = tmp;
     
 }
 int sum(int num1, int num2){
