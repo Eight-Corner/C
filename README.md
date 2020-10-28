@@ -1,7 +1,13 @@
 
 
-commit 2020.10.27 updated
+commit 2020.10.28 updated
 
+C-Day 01 -- signed  / unsigned
+
+C-Day 02 -- 논리연산 / 산술 / if문 사용 / 
+C-Day 02-1 -- 단순  if문 예제풀이 
+
+C-Day 03 -- switch문,if문,do-while문,쉬프트 연산, 각 예제 이용
 
 C-Day 01 -- signed / unsigned
 
