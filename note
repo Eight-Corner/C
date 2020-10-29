@@ -1,0 +1,52 @@
+/*
+ // 주소 project
+
+ 
+ // 구조체 : 다른 자료형을 갖는 변수의 집합
+ struct {
+     // 자료형 변수명1;
+     // 자료형 변수명2;
+ }  //구조체 명;
+
+ // 배열 : 같은 자료형의 연속적인 메모리 할당
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// # <process.h> 포함 //
+// process.h는 스레드 및 프로세스 작업에 사용되는 함수 선언 및 매크로를 포함하는 C 헤더 파일입니다.
+// DOS, Windows 3.1x, Win32, OS / 2, Novell NetWare 또는 DOS 확장기를 대상으로하는 대부분의 C 컴파일러는 C 라이브러리에서이 헤더와 라이브러리 함수를 제공합니다.
+// 헤더 파일이나 대부분의 함수는 ANSI / ISO C 표준이나 POSIX에 의해 정의되지 않습니다. // 즉 MacOS나 리눅스는 process의 헤더파일을 사용할 수 없다.
+// 컴파일하는 플랫폼과 사용하는 표준에 따라 다릅니다. Linux를 사용하거나 c99 / ansi 표준으로 컴파일하면이 헤더를 사용할 수 없을 것입니다 (그 외 오류 일 수 있음).
+
+#define _FILE_ "ADDRBOOK.dat"
+
+// 구조체 = 자바로 치면 클래스 생성자 선언
+struct data { //구조체 구조체명
+    char cName[8]; // 8byte라고 변수 선언
+    char cTel[16]; // 전화번호 16byte의 자리 값 변수
+    char cAddr[32]; // 주소의 32byte의 자리 값 변수
+};
+// 함수 선언
+void SelOne(unsigned, struct data *); // 1개는 unsigned 정수 , 구조체 포인터 변수(참조변수)를 입력 (자료입력)
+void SelTwo(unsigned, struct data *); // 자료 검색
+void SelThree(unsigned, struct data *); // 자료 수정
+void SelFour(unsigned, struct data *); // 자료 삭제
+void SelFive(unsigned, struct data *); // 자료 조회
+
+int Cnt_data(unsigned); // 정보의 한줄 => 레코드 ADDRBOOK.dat에 save할 예정, 레코드 인원수를 카운팅하기 위한 함수.
+
+int main(int argc, const char * argv[]) {
+    
+    char cBtn; // c Button 콘솔 입력을 받기위한 변수 선언;
+    int Lec; //
+    unsigned rsize = sizeof(struct data); // 56byte
+    
+    struct data *Book1; //포인터변수 Book1선언-> 구조체에 접근할 수 있기 위함
+    
+    
+        
+    
+    
+}
