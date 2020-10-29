@@ -1,6 +1,6 @@
 
 
-commit 2020.10.28 updated
+ updated
 
 C-Day 01 -- signed  / unsigned
 
