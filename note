@@ -1,128 +1,171 @@
-/*
- // 주소 project
-
- 
- // 구조체 : 다른 자료형을 갖는 변수의 집합
- struct {
-     // 자료형 변수명1;
-     // 자료형 변수명2;
- }  //구조체 명;
-
- // 배열 : 같은 자료형의 연속적인 메모리 할당
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <process.h>
-//#include <unistd.h> // procees.h의 역할
+#include <process.h>
 
-#define _FILE_ "ADDRBOOK.dat"
+#define  _FILE_   "ADDRBOOK.dat"
 
-// 구조체 = 자바로 치면 클래스 생성자 선언
-struct data { //구조체 구조체명
-    char cName[8]; // 8byte라고 변수 선언
-    char cTel[16]; // 전화번호 16byte의 자리 값 변수
-    char cAddr[32]; // 주소의 32byte의 자리 값 변수
+//구조체 선언  
+struct data {
+   char cName[8];
+   char cTel[16];
+   char cAddr[32];
 };
-// 함수 선언
-void SelOne(unsigned, struct data *); // 1개는 unsigned 정수 , 구조체 포인터 변수(참조변수)를 입력 (자료입력)
-void SelTwo(unsigned, struct data *); // 자료 검색
-void SelThree(unsigned, struct data *); // 자료 수정
-void SelFour(unsigned, struct data *); // 자료 삭제
-void SelFive(unsigned, struct data *); // 자료 조회
 
-int Cnt_data(unsigned); // 정보의 한줄 => 레코드 ADDRBOOK.dat에 save할 예정, 레코드 인원수를 카운팅하기 위한 함수.
+//함수 선언 
+void SelOne(unsigned, struct data *);//자료 입력 
+void SelTwo(unsigned, struct data *);//자료 검색  
+void SelThree(unsigned, struct data *);//자료 수정 
+void SelFour(unsigned, struct data *);//자료 삭제 
+void SelFive(unsigned, struct data *);//자료 조회 
 
-int main(int argc, const char * argv[]) {
-    
-    char cBtn; // c Button 콘솔 입력을 받기위한 변수 선언;
-    int Lec; //
-    unsigned rsize = sizeof(struct data); // 56byte
-    
-    struct data *Book1; //포인터변수 Book1선언-> 구조체에 접근할 수 있기 위함
-    struct data *Book2;
-    
-    while(1){
-        // 데이터 갯수 세기, 파일에 들어 있는 레코드 갯수 세기
-        Lec = Cnt_data(rsize);
-        Book1 = (struct data *) malloc(1*sizeof(struct data)); // malloc = 동적할당 함수   [ struct data의 주소 = 일반주소 // 구체화 = ( ) 범용적인 자료 downcasting ]
-        Book2 = (struct data *)malloc(Lec*sizeof(struct data)); // 형변환
-        // Book1 == 하나도 없을 때 (처음일 때) 레코드 넣을 메모리 확보 , // Book2 => 파일안에 여러개의 레코드를 넣을 메모리 확보
-        system("clear"); // 윈도우에서는 "cls", 맥에선 "clear"
-        printf("구조체 크기 : %d\n", rsize);
-        printf("데이터 갯수 : %d\n\n", Lec);
-        
-        if(Lec != 0 ) {//파일에 데이터가 이미있는 경우
-            printf("1. 자료 입력 \n");
-            printf("2. 자료 검색 \n");
-            printf("3. 자료 수정 \n");
-            printf("4. 자료 삭제 \n");
-            printf("5. 자료 조회 \n");
-            printf("0. 종    료 \n");
-            printf("번호를 입력하여 선택하세요 : ");
-            scanf("%c",&cBtn);
-            
-        } else { // 제일 처음에 파일에 아무것도 없는 상태
-            cBtn='1'; // char 자료형이니 싱글 따옴표
-            }
-        if (cBtn == '1') { //입력하는 코드
-            system("clear");
-            SelOne(rsize, Book1);
-        } else if (cBtn == '2') { // 2라면 검색 하지만 Lec이 있는지 없는지 유효성 검사 판별 추가
-            if ( Lec == 0 ){
-                printf("검색할 데이터가 존재하지 않습니다. 데이터를 넣어주세요. \n");
-                system("pause");
-            } else {
-                system("clear");
-                SelTwo(rsize, Book2);
-            }
-        } else if (cBtn == '3') { // 자료 수정
-            if ( Lec == 0 ){
-                printf("수정할 데이터가 존재하지 않습니다. 데이터를 넣어주세요. \n");
-                system("pause");
-            } else {
-                system("clear");
-                SelThree(rsize, Book2);
-            }
-        } else if (cBtn == '4') {
-            if (Lec == 0 ){
-                printf("삭제할 데이터가 없습니다. 데이터를 넣어주세요. \n");
-                system("pause");
-            } else {
-                system("clear");
-                SelFour(rsize, Book2);
-            }
-        } else if ( cBtn == '5') {
-            if (Lec == 0 ){
-                printf("조회할 데이터가 없습니다. \n");
-                system("pause");
-            } else {
-                system("clear");
-                SelFive(rsize, Book2);
-            }
-        }
-        
-    }
+int Cnt_data(unsigned); //레코드 인원수를 세어주는 함수  
+ 
+int main(int argc, char *argv[]) {
+    char cBtn;
+   int Lec;
+   unsigned rsize = sizeof(struct data);//56 byte
+   
+   struct data *Book1;//구조체에 접근하기 위해서 필요한 변수 Book1입니다. 그런데 이것을 포인터 변수로 쓴 것  
+   struct data *Book2;
     
     
-    return 0;
-    
+   while(1){
+      //데이터 갯수 세기, 파일에 들어 있는 레코드 갯수 세기
+      
+      Lec=Cnt_data(rsize); //56
+   //   Lec = 10;//임시로 반복문 멈추게 하기 위해서 조금 있다 지워야 함 
+       Book1 = (struct data *)malloc(1*sizeof(struct data));//1개 레코드 넣을 메모리 확보 
+       Book2 = (struct data *)malloc(Lec*sizeof(struct data));//파일안에 여러개의 레코드를 넣을 메모리 확보  
+      system("cls");//커멘드 명령(윈도우 명령) 화면을 크리어하는 함수
+      printf("구조체 크기 : %d\n", rsize);
+      printf("데이터 갯수 : %d\n\n", Lec);
+      
+      if(Lec != 0 ){ //파일에 데이터가 이미 있는 경우  
+         printf("1. 자료 입력 \n");
+         printf("2. 자료 검색 \n");
+         printf("3. 자료 수정  \n");
+         printf("4. 자료 삭제 \n");
+         printf("5. 자료 조회 \n");
+         printf("0. 종     료 \n");
+         printf("선택하세요 : ");
+         scanf("%c", &cBtn);
+      } else {  //제일 처음에 파일에 아무것도 없는 상태 
+         cBtn='1'; 
+      }
+       if(cBtn == '1'){
+          system("cls");
+          SelOne(rsize, Book1);
+      }else if(cBtn == '2'){
+         if(Lec == 0 ){
+            printf("검색할 데이터가 없습니다 \n");
+            system("pause");
+         }else{
+            system("cls");
+            SelTwo(rsize,Book2);
+         }
+      }else if(cBtn=='3'){
+         if(Lec == 0) {
+            printf("수정할 데이터가 없습니다 \n");
+            system("pause");
+         }else{
+            system("cls");
+            SelThree(rsize, Book2);
+         }
+      }else if(cBtn=='4'){
+         if(Lec == 0){
+            printf("삭제할 데이터가 없습니다 \n");
+            system("pause");
+         }else{
+            system("cls");
+            SelFour(rsize, Book2);
+         }
+      }else if(cBtn == '5'){
+         if(Lec == 0 ){
+            printf("조회할 데이터가 없습니다 \n");
+            system("pause");
+         }else{
+            system("cls");
+            SelFive(rsize, Book2);
+         }
+         
+      }else if(cBtn == '0'){
+         break;
+      } 
+   }
+   
+      
+   return 0;
+
 }
 
-// ㄹ[ㅔ코드 갯수 세어주는 함수
-int Cnt_data(unsigned rsize) { // 양수만
-    int Cnt; // 갯수 세기
-    FILE *fload; // FILE에 주소를 담기위한 변수, 파일을 쓰기 위한 예약어
-    
-    fload = fopen(_FILE_, "r"); // r - 읽기 w - 쓰기
-    //파일을 불러온다 = 파을 열어준다 (_파일명_, 읽기 전용으로);
-    if (fload == NULL ) { // NULL == 파일이 없다면
-        Cnt = 0;
-    } else {
-        fseek(fload, -1, SEEK_END); // 자료를 찾아주는 함수 -> SEEK_END 끝날때까지
-        Cnt =(ftell(fload)/rsize)+1; //
-        fclose(fload);
-    }
-    return Cnt;
+//레코드 갯수 세어 주는 함수  
+int Cnt_data(unsigned  rsize){ //56
+   int Cnt;
+   FILE *fload;//fload라는 변수는 FILE의 포인터 변수이다. 
+   
+   fload = fopen(_FILE_, "r");
+   if(fload == NULL) {
+      Cnt = 0;
+   }else{
+      fseek(fload, -1, SEEK_END);//fseek(파일포인터, 이동할 크기, 기준점); 성공하면 0 실패하면 -1를 반환함 
+      Cnt = (ftell(fload)/rsize)+1;//ftell(파일포인터) 파일포인터의 현재 위치를 반환한다. 실패하면 -1를 반환한다.   
+      fclose(fload);
+   }
+   return Cnt;
 }
+
+void SelOne(unsigned rsize, struct data *Book1){
+    FILE  *fsave;
+    
+    fflush(stdin);
+    printf("\n 이  름[8자] :  ");
+    gets(Book1->cName);
+    printf("\n 전화번호[16자] :  ");
+    gets(Book1->cTel);
+    printf("\n 주   소[24자] :  ");
+    gets(Book1->cAddr);
+    
+    if(strlen(Book1->cName) < 1 || strlen(Book1->cTel) < 1 || strlen(Book1 -> cAddr) < 1){
+       printf("아무런 입력이 없어 주소록에 저장되지 않습니다 \n");
+   }else{
+     fsave = fopen(_FILE_, "a+");//append 추가    
+     fwrite(Book1, rsize, 1, fsave);
+     fclose(fsave);  
+   }
+   system("pause");
+  }//자료 입력 
+  
+void SelTwo(unsigned rsize, struct data *Book2){
+   
+   int nNum,i;
+   FILE *fload;
+   int Cnt = Cnt_data(rsize);//데이터(레코드) 개수 세주는 함수 호출  
+   printf("총 %d개의 데이터가 있습니다.\n ", Cnt);//ex) 3
+   printf("몇 번째 데이터를 조회하시겠습니까? ");//ex) 5번 조회  
+   scanf("%d", &nNum);//2
+   
+   fload = fopen(_FILE_, "r+"); 
+   fread(Book2, rsize, Cnt, fload);
+   for(i=0;i<Cnt;i++){ //i=0, 1
+       if(nNum-1 == i){ //2-1 == 0 2-1 == 1
+            printf("\n %d번째 데이터 \n", i+1);
+            printf("이    름 : %s\n", (Book2+i)->cName);
+            printf("전화번호 : %s \n", (Book2+i)->cTel);
+            printf("주    소 : %s \n", (Book2+i)->cAddr);
+      }
+   }
+   fclose(fload);
+   system("pause");
+ }//자료 검색  
+ 
+void SelThree(unsigned rsize, struct data *Book2){
+
+ }//자료 수정 
+void SelFour(unsigned rsize, struct data *Book2){
+
+}//자료 삭제 
+void SelFive(unsigned rsize, struct data *Book2){
+
+}
+//자료 조회 
