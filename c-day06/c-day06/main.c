@@ -14,10 +14,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <term.h> //
-//#include <curses.h> //
+#include <term.h> //
+#include <curses.h> //
 //#include <process.h>
-//#include <unistd.h> // procees.h의 역할
+#include <unistd.h> // procees.h의 역할
 
 
 
@@ -39,10 +39,6 @@ void SelFive(unsigned, struct data *); // 자료 조회
 int Cnt_data(unsigned); // 정보의 한줄 => 레코드 ADDRBOOK.dat에 save할 예정, 레코드 인원수를 카운팅하기 위한 함수.
 
 int main(int argc, const char * argv[]) {
-
-
- 
-
     
     char cBtn; // c Button 콘솔 입력을 받기위한 변수 선언;
     int Lec; //
@@ -54,7 +50,7 @@ int main(int argc, const char * argv[]) {
     while(1){
         // 데이터 갯수 세기, 파일에 들어 있는 레코드 갯수 세기
         Lec = Cnt_data(rsize);
-        Lec = 10;
+//        Lec = 10;
         Book1 = (struct data *) malloc(1*sizeof(struct data)); // malloc = 동적할당 함수   [ struct data의 주소 = 일반주소 // 구체화 = ( ) 범용적인 자료 downcasting ]
         Book2 = (struct data *)malloc(Lec*sizeof(struct data)); // 형변환
         // Book1 == 하나도 없을 때 (처음일 때) 레코드 넣을 메모리 확보 , // Book2 => 파일안에 여러개의 레코드를 넣을 메모리 확보
@@ -85,7 +81,6 @@ int main(int argc, const char * argv[]) {
                 system("read"); // pause 대신 read
             } else {
                 system("clear");
-                
                 SelTwo(rsize, Book2);
             }
         } else if (cBtn == '3') { // 자료 수정
@@ -155,18 +150,121 @@ void SelOne(unsigned rsize, struct data *Book1){
     if (strlen(Book1->cName) < 1 || strlen(Book1->cTel) < 1 || strlen(Book1->cAddr) < 1 ) { // String length 의미 , 입력을 안했을 경우
         printf("제대로 다시 입력하세요! ");
     } else { //입력하는 구문
-        
+        fsave = fopen(_FILE_, "a+");
+        fwrite(Book1, rsize, 1, fsave);
+        fclose(fsave);
     }
+    system("read");
 }
 void SelTwo(unsigned rsize, struct data *Book2){
     
-}
-void SelThree(unsigned rszie, struct data *Book2){
-
-}
-void SelFour(unsigned rsize, struct data *Book2) {
+    int nNum; // =조회를 입력할 변수 선언 scan
+    FILE *fload; // 파일을 로드할 변수 선언
+    int Cnt = Cnt_data(rsize); // 데이터(레코드)개수 세주는 함수 호출
+    printf("총 %d 개의 데이터가 있습니다.\n", Cnt);
+    printf("몇 번째의 데이터를 조회하시겠습니까? ");
+    scanf("%d", &nNum);
     
+    fload = fopen(_FILE_, "r+"); //파일을 읽기모드로 오픈
+    fread(Book2, rsize, Cnt, fload); // 파일 읽기 함수
+    for (int i=0; i<Cnt; i++){
+        if(nNum-1 == i ){ // -1이유 : 5번을 입력하면 4번인덱스 (0 1 2 3 4) , 0번 인덱스를 보고싶으면 1번을 입력 ( 0 1 2 3 4)
+            printf("\n %d번째 데이터 \n",i+1);
+            printf("이   름 : %s\n",(Book2+i)->cName);
+            printf("전화번호 : %s \n",(Book2+i)->cTel);
+            printf("주   소 : %s \n",(Book2+i)->cAddr);
+        }
+    }
+    fclose(fload);// 열어둔 파일을 반환,
+    system("read");
+} // 자료 검색 함수
+void SelThree(unsigned rsize, struct data *Book2){
+    int i, temp = 0;
+    int Cnt;
+    int nNum;
+    FILE *fsave;
+    FILE *fload;
+    
+    Cnt = Cnt_data(rsize);
+    
+    printf("총 %d개의 데이터가 있습니다. \n", Cnt);
+    printf("몇 번째의 데이터를 수정하시겠습니까? ");
+    scanf("%d", &nNum); // 입력받아서 몇번째를 수정할 건지 작성
+    
+    fload = fopen(_FILE_, "r+"); //
+    fread(Book2, rsize, Cnt, fload);
+    for (i=0; i < Cnt ; i++) {
+        if(nNum-1 == i){
+        printf("\n%d번 데이터 \n", i+1);
+        fflush(stdin);
+        printf("이   름 : ");
+        gets((Book2+i)->cName);
+        printf("전화번호 : ");
+        gets((Book2+i)->cTel);
+        printf("주   소 : ");
+        gets((Book2+i)->cAddr);
+        if(strlen((Book2+i)->cName) < 1 || strlen((Book2+i)->cTel) < 1 || strlen((Book2+i)->cAddr) < 1){
+            temp++; // 임시 저장변수
+        }
+        }
+     } // end for
+    if (temp > 0 ){
+        printf("아무런 입력이 없었기 때문에 주소를 수정하지 않았습니다.\n");
+    } else {
+        fsave = fopen(_FILE_, "w+");// 쓰기 권한을 줌.
+        fwrite(Book2, rsize*Cnt, 1, fsave);
+        fclose(fsave);
+        printf("주소록을 수정 하였습니다. 파일을 저장합니다. \n");
+    }
+    printf("수정을 마칩니다.\n");
+    fclose(fload);
+    system("read");
+    
+} // 자료 수정 함수 end
+void SelFour(unsigned rsize, struct data *Book2) {
+    int i, j=0;
+    int nNum;
+    char cyn;
+    int Cnt = Cnt_data(rsize);
+    FILE *fsave; // write
+    FILE *fload; // read
+    
+    printf("총 %개의 데이터가 있습니다. \n", Cnt);
+    
+    if (Cnt == 1 ) { // data가 1개 밖에 없다면
+        printf("1개의 데이터만 존재하므로 삭제가 불가능 합니다.");
+        fflush(stdin);
+        printf("모두 삭제 하시겠습니까? (Y/N)");
+        cyn = getchar(); // 한글자의 문자를 입력받을땐 이 방법도 가능 ,한글자를 입력하는 함수를 사용 scanf("%c",&cyn);
+        if ( cyn == 'Y' || cyn == 'y' ) {
+            unlink(_FILE_); // file이 연결된 것을 소멸
+        } else {
+            printf("취소 되었습니다.\n");
+        }
+    } else {
+        while (1) {
+            printf("몇번째 데이터를 삭제하시겠습니까? ");
+            scanf("%d", &nNum);
+            if (nNum <= Cnt) break;
+        }
+        fopen(_FILE_, "r+");
+        fread(Book2, rsize, Cnt, fload );
+        for(i = 0; i< Cnt; i++ ){
+            if ( i != nNum-1) { // 내가 삭제할 번호와 같지 않다면,
+                if ( j == 0 ) fsave = fopen(_FILE_, "w+"); // j가 0이랑 같다면,(현재 아무 파일이 없기 때문에 0, ) 새로 생성파일을 만든다. w+
+                else fsave = fopen(_FILE_, "a+");
+                fwrite(Book2 + i, rsize, 1, fsave);
+                fclose(fsave);
+                j++;
+            }
+        }
+        printf("선택하신 레코드가 삭제 되었습니다. \n");
+        fclose(fload);
+        printf("삭제를 끝냅니다. \n");
+    }
+    system("read");
 }
 void SelFive(unsigned rsize, struct data *Book1){
     
 }
+ 
