@@ -14,7 +14,7 @@ struct banking {
 int menu_disp(); //메뉴 함수 선언 
 
 void init(struct banking *init, struct banking *init_rcv);//초기화 함수 선언 
-void open(struct banking *popen, struct banking *prcv);//계좌 등록 함수 
+void open(struct banking *popen, struct banking *prcv);//계좌 등록 함수  prcv = 수신계좌  
 void input(struct banking *pinput);//입금 함수 
 void withdrawal(struct banking *pwithdrawal);//출금 함수 
 void transfer(struct banking *ptransfer,struct banking *prcv);//계좌 이체 함수 
@@ -100,18 +100,73 @@ void open(struct banking *popen, struct banking *prcv){
    getchar();
    //getchar ()는 엔터키를 먹어줌  
 } 
-//함수 저으이 해둘 것
-void input(struct banking *pinput) {
+//함수 정의  해둘 것
+void input(struct banking *pinput) { //입금 함수
+	char temp_acct_no[10];
+	int result, money; 
+	printf("입/출금은 발신 계좌에서만 가능합니다. \n");
+	printf("계좌번호 [10자 이내]");
+	scanf("%s", temp_acct_no);
+	result = strcmp(pinput->acct_no, temp_acct_no); 
+	// 스트링 컴페어가 발신계좌 등록 계좌번호와 지금 입력 계좌번호가 같은지 비교 
+	 // 비교해서 같으면 0을 리턴하고 같지 않다면 0이 아닌수를 리턴  
+	if (result == 0 ){
+		printf("입금 할 금액 : ");
+		scanf("%d", &money); 
+		pinput->balance = pinput -> balance + money; 
+		// 기존에 들어있는 금액에다 넣기s
+	} else {
+		printf("\n일치하는 계좌번호가 없습니다");
+		FLUSH;
+		printf("\n... 계속하려면 아무키를 입력하세요. ");
+		getchar();
+	}
+} 
+void withdrawal(struct banking *pwithdrawal){ //출금 함수
+} 
+void transfer(struct banking *ptransfer,struct banking *prcv){ //계좌 이체 함수 
+}
+void balance(struct banking *pbalance,struct banking *prcv){ //잔액 조회 함수 
+	char temp_acct_no[10];
+   int result, match=0;
+   printf("계좌 번호 : ");
+   scanf("%s", temp_acct_no);
+   // 발신계좌 검색  
+   result = strcmp(pbalance->acct_no, temp_acct_no) ;
+   
+   // 발신 계좌를 조회했을때 match를 1로 변경
+   if(result == 0) { 
+     printf("계좌 번호 : %s",pbalance->acct_no );
+     printf("계좌 성명 : %s", pbalance->acct_name );
+     printf("금    액 : %d", pbalance->balance );
+     match=1; 
+   }
+   
+   result = strcmp(prcv->acct_no, temp_acct_no) ;  // 수신계좌 검색
+  
+   // 발신 계좌를 조회했을때 match를 1로 변경  
+   if(result == 0) {		
+     printf("계좌 번호 : %s",prcv->acct_no );
+     printf("계좌 성명 : %s", prcv->acct_name );
+     printf("금    액 : %d", prcv->balance );
+     match=1; 
+   }
+   
+   if(match==0) 
+      printf("계좌번호 오류 입니다 .");
+   FLUSH;
+   printf("...Press any key to continue... ");
+   getchar();
 
-} //입금 함수 
-void withdrawal(struct banking *pwithdrawal){
-}//출금 함수 
-void transfer(struct banking *ptransfer,struct banking *prcv){
-}//계좌 이체 함수 
-void balance(struct banking *pbalance,struct banking *prcv){
-}//잔액 조회 함수 
-void pfree(struct banking *pfree){
-}//종료 함수
+  
+	
+	}
+  
+
+	
+	
+void pfree(struct banking *pfree){ //종료 함수
+}
 
 
 
