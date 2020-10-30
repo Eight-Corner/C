@@ -4,9 +4,10 @@
 #include <string.h>
 #include <process.h>
 
-#define  _FILE_   "ADDRBOOK.dat"
+#define  _FILE_   "ADDRBOOK.dat" // 파일명 선언 
 
 //구조체 선언  
+ 
 struct data {
    char cName[8];
    char cTel[16];
@@ -37,7 +38,9 @@ int main(int argc, char *argv[]) {
       Lec=Cnt_data(rsize); //56
    //   Lec = 10;//임시로 반복문 멈추게 하기 위해서 조금 있다 지워야 함 
        Book1 = (struct data *)malloc(1*sizeof(struct data));//1개 레코드 넣을 메모리 확보 
-       Book2 = (struct data *)malloc(Lec*sizeof(struct data));//파일안에 여러개의 레코드를 넣을 메모리 확보  
+       // 레코드 = 필드 + 필드 + 필드 / 레코드 = Book1에 저장  
+       Book2 = (struct data *)malloc(Lec*sizeof(struct data));//파일안에 여러개의 레코드를 넣을 메모리 확보
+	   //   
       system("cls");//커멘드 명령(윈도우 명령) 화면을 크리어하는 함수
       printf("구조체 크기 : %d\n", rsize);
       printf("데이터 갯수 : %d\n\n", Lec);
@@ -110,6 +113,8 @@ int Cnt_data(unsigned  rsize){ //56
       Cnt = 0;
    }else{
       fseek(fload, -1, SEEK_END);//fseek(파일포인터, 이동할 크기, 기준점); 성공하면 0 실패하면 -1를 반환함 
+    // 
+      
       Cnt = (ftell(fload)/rsize)+1;//ftell(파일포인터) 파일포인터의 현재 위치를 반환한다. 실패하면 -1를 반환한다.   
       fclose(fload);
    }
@@ -253,6 +258,21 @@ void SelFour(unsigned rsize, struct data *Book2){
 
 }//자료 삭제 
 void SelFive(unsigned rsize, struct data *Book2){
-
+  int i;
+  int Cnt = Cnt_data(rsize);
+  FILE *fload;
+  
+  printf("총 %d개의 데이터가 있습니다. ", Cnt);
+  fload = fopen(_FILE_, "r+");
+  fread(Book2, rsize, Cnt, fload);
+  for(i=0;i<Cnt; i++){
+     printf("\n %d번째 데이터 \n", i+1);
+     printf("이   름 : %s \n ", (Book2+i)->cName);
+     printf("전화번호: %s \n ", (Book2+i)->cTel);
+     printf("주   소 : %s \n ", (Book2+i)->cAddr);
+  }
+  fclose(fload);
+  system("pause");
 }
+
 //자료 조회 
