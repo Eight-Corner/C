@@ -19,7 +19,6 @@ void input(struct banking *pinput);//입금 함수
 void withdrawal(struct banking *pwithdrawal);//출금 함수 
 void transfer(struct banking *ptransfer,struct banking *prcv);//계좌 이체 함수 
 void balance(struct banking *pbalance,struct banking *prcv);//잔액 조회 함수 
-void pfree(struct banking *pfree);//종료 함수
 
 
 void main() {
@@ -47,7 +46,7 @@ void main() {
             break;
          case 5 : balance (account, rcv_acct); // 잔액조회 
             break;
-         case 9 : pfree(account); pfree(rcv_acct); exit(0); // 종료하기 
+         case 9 : exit(0); // 종료하기 
          default : break;
       }
    }
@@ -123,8 +122,83 @@ void input(struct banking *pinput) { //입금 함수
 	}
 } 
 void withdrawal(struct banking *pwithdrawal){ //출금 함수
+	char temp_acct_no[10];
+	int result, money;
+	printf("출금하시려는 계좌번호를 입력하세요.\n");
+	printf("계좌번호 [10자 이내] : ");
+	scanf("%s", temp_acct_no);
+	
+	result = strcmp(pwithdrawal->acct_no, temp_acct_no);
+	
+	if (result == 0 ){
+		printf("출금 할 금액 : ");
+		scanf("%d", &money);
+		if( money > pwithdrawal->balance){ // 포인트가 balnace를 가르키는 돈이 money보다 크다면 
+			printf("잔액이 부족합니다.\n");
+			FLUSH;
+			printf("...진행하려면 아무키를 입력하세요..");
+			getchar(); 
+		} else {  
+	    pwithdrawal->balance = pwithdrawal->balance - money;
+	    // 원래 잔액에서 money값을 빼서 코드(원래잔액)에 대입 
+		}  
+	} else {
+		printf("일치하는 계좌번호가 없습니다. \n");
+		FLUSH;
+		printf("...진행하려면 아무키를 입력하세요. ");
+		getchar();
+	}
+ 
+
 } 
 void transfer(struct banking *ptransfer,struct banking *prcv){ //계좌 이체 함수 
+		char temp_acct_no[10];
+		int result1,result2,money;
+		
+		printf("보낼사람의 계좌번호를 입력하세요. : ");
+		scanf("%s", temp_acct_no);
+		
+		result1 = strcmp(ptransfer->acct_no,temp_acct_no);  //내가 입력한 값(temp_acct_no)와 계좌번호가 같는지
+		
+		if(result1 == 0 ){
+			printf("잔 액 : %d \n", ptransfer->balance);	
+			printf("받을사람의 계좌번호를 입력하세요. : ");
+			scanf("%s",temp_acct_no);
+				result2 = strcmp(prcv->acct_no, temp_acct_no); //수신 계좌(prcv)랑 비교 
+		
+			if(result2 == 0){ 
+				printf("이체할 금액을 입력하세요 : ");
+				scanf("%d", &money);
+			
+				if(money > ptransfer->balance ) {  // 보낼 사람의 금액이 money보다 크다면 
+					printf("이체할 금액이 부족합니다.\n");
+					printf("잔액을 다시 확인하세요. ");
+					FLUSH;
+					printf("계속 진행하려면 아무키를 입력하세요. ");
+					getchar();
+			} else { // 보낼 사람의 금액이 충분하므로 이체 구문작성 
+				ptransfer->balance -= money;  //보낼사람의 계좌의 금액에서 money를 뺀다.
+				printf("계좌번호 : %s 로 %d 원이 송금 되었습니다. ", prcv->acct_no, money);
+				prcv->balance += money; // 수신계좌의 잔액에 금액을 추가시킴
+				printf("발신 계좌번호: %s의 잔액은 %d 원 있습니다.", ptransfer->acct_no, ptransfer->balance);
+				printf("수신 계좌번호: %s의 잔액은 %d 원 있습니다.", prcv->acct_no, prcv->balance);
+				FLUSH;
+				printf("계속 진행하려면 아무키를 입력하세요. ");
+					getchar();
+			}
+		}  else {
+			printf("일치하는 계좌번호가 없습니다. \n");
+			FLUSH;
+			printf("...진행하려면 아무키를 입력하세요. ");
+			getchar();
+		}
+	}  else {
+			printf("일치하는 계좌번호가 없습니다. \n");
+			FLUSH;
+			printf("...진행하려면 아무키를 입력하세요. ");
+			getchar();
+		}
+
 }
 void balance(struct banking *pbalance,struct banking *prcv){ //잔액 조회 함수 
 	char temp_acct_no[10];
@@ -148,7 +222,7 @@ void balance(struct banking *pbalance,struct banking *prcv){ //잔액 조회 함수
    if(result == 0) {		
      printf("계좌 번호 : %s",prcv->acct_no );
      printf("계좌 성명 : %s", prcv->acct_name );
-     printf("금    액 : %d", prcv->balance );
+     printf("금     액 : %d", prcv->balance );
      match=1; 
    }
    
@@ -157,16 +231,9 @@ void balance(struct banking *pbalance,struct banking *prcv){ //잔액 조회 함수
    FLUSH;
    printf("...Press any key to continue... ");
    getchar();
-
-  
 	
 	}
-  
-
-	
-	
-void pfree(struct banking *pfree){ //종료 함수
-}
+ 
 
 
 
