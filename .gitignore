@@ -45,7 +45,7 @@ Eclipse-han.app
 *.pydevproject
 .metadata
 .project
- bin/**
+bin/**
 .classpath
 .settings/
 # resource/*
