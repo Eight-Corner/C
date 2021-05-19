@@ -1,3 +1,0 @@
-eclipse.preferences.version=1
-module-start-timeout=300000
-runtimes=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<runtimes>\n  <runtime id\="mac tomcat" location\="/Users/corner/apache-tomcat-8.5.63" name\="mac tomcat" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.85" timestamp\="4" vm-install-id\="com.oracle.java.8u271.jdk" vm-install-type-id\="org.eclipse.jdt.internal.launching.macosx.MacOSXType"/>\n  <runtime id\="Apache Tomcat v8.5 (2)" location\="/Users/corner-macmini/apache-tomcat-8.5.63" name\="Apache Tomcat v8.5 (2)" runtime-type-id\="org.eclipse.jst.server.tomcat.runtime.85" timestamp\="0" vm-install-id\="1616385992426" vm-install-type-id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType"/>\n</runtimes>\n

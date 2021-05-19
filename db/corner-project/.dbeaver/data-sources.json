@@ -37,6 +37,72 @@
 			"custom-properties": {
 				"database.meta.separate.connection": "false"
 			}
+		},
+		"oracle_thin-1798442fe57-11edeaadffe47da7": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "Oracle - XE",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"host": "camp-fire.kro.kr",
+				"port": "1521",
+				"database": "XE",
+				"url": "jdbc:oracle:thin:@//camp-fire.kro.kr:1521/XE",
+				"type": "dev",
+				"properties": {
+					"useFetchSizeWithLongColumn": "true",
+					"loginTimeout": "20",
+					"oracle.jdbc.fanEnabled": "false"
+				},
+				"provider-properties": {
+					"@dbeaver-always-use-dba-views@": "false",
+					"@dbeaver-sid-service@": "SERVICE",
+					"@dbeaver-use-rule-hint@": "false",
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-check-schema-content@": "true",
+					"@dbeaver-always-show-dba@": "false",
+					"@dbeaver-meta-use-sys-schema@": "false",
+					"@dbeaver-meta-use-simple-constraints@": "false",
+					"@dbeaver-use-meta-optimizer@": "false",
+					"@dbeaver-meta-use-alternative-table-query@": "false"
+				},
+				"auth-model": "oracle_native",
+				"handlers": {}
+			}
+		}
+	},
+	"virtual-models": {
+		"oracle_thin-1798442fe57-11edeaadffe47da7": {
+			"CORNER": {
+				":CAMP_USER": {
+					"properties": {
+						"erd.diagram.state": {
+							"serialized": "<diagram version=\"1\" name=\"CAMP_USER\" time=\"202103101620\"><entities><data-source id=\"oracle_thin-1780ff3365b-107c83e24fee1ee7\"><entity id=\"1\" name=\"CAMP_USER\" fq-name=\"CORNER.CAMP_USER\" order=\"0\" color-bg=\"123,76,75\" border-width=\"3\" x=\"20\" y=\"20\"><path name=\"CORNER\"/></entity></data-source></entities><relations/></diagram>"
+						}
+					}
+				}
+			}
+		}
+	},
+	"network-profiles": {
+		"corner-mac": {
+			"name": "corner-mac",
+			"handlers": {
+				"ssh_tunnel": {
+					"type": "TUNNEL",
+					"enabled": true,
+					"save-password": true,
+					"properties": {
+						"port": 22,
+						"keyPath": "/Users/corner-macmini/.ssh/corner_rsa",
+						"implementation": "jsch",
+						"host": "corner-mac.kro.kr",
+						"authType": "PUBLIC_KEY"
+					}
+				}
+			}
 		}
 	},
 	"connection-types": {

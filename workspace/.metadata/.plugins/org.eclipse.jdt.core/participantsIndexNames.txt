@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-/Users/corner-macmini/Github/han/spring/workspace2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1863281164.index
-/test/src/main/java
-/Users/corner-macmini/Github/han/spring/workspace2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2067395418.index
-/corner_project/src/main/java
-/Users/corner-macmini/Github/han/spring/workspace2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4218265101.index
-/corner_project/src/main/java
