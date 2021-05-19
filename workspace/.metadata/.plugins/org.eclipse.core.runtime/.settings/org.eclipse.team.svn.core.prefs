@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/802e01c0c78a001b1021d360583bad4a=802e01c0c78a001b1021d360583bad4a;https\://svn.riouxsvn.com/eventmoa;https\://svn.riouxsvn.com/eventmoa;branches;tags;trunk;true;d94bbb1f-fb53-4cf5-9ab4-08066a201e33;https\://svn.riouxsvn.com/eventmoa;;false;;;0

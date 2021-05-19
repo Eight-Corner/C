@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+/Users/corner-macmini/Github/han/spring/workspace2/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+4074816042.index
+976313414.index
+3044672814.index
+3476042677.index
+2751187529.index
+2067395418.index
+2966126649.index
