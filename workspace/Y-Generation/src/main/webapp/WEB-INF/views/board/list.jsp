@@ -107,7 +107,9 @@
 						</header>
 						<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image main">
 						<img src="/resources/images/bg/bg2.jpg" alt="" /></a>
-						<p>${board.content}</p>
+							<c:set var="content1" value="${board.content}" />
+							<c:set var="content2" value="${fn:substring(content1, 1, 30)}" />
+							<p>${board.content} •••.</p>
 					</c:forEach>
 				</div>
 			</section>

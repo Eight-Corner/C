@@ -15,7 +15,15 @@ SELECT * FROM T_BOARD;
 
 INSERT INTO T_BOARD
 (BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE)
-VALUES(T_SEQ_BOARD.NEXTVAL, 'home', '화려한 불빛들  그리고 바쁜 일상들  뒤에 숨겨진  초라한 너의 뒷모습과  하고 싶은 일 해야만 하는 일  사이에서 고민하는  너의 무거운 어깨를 위해  너의 발걸음이 들릴 때  웃으며 마중을 나가는 게  너에게 해줄 수 있는  나의 유일한 선물이었지 어디 아픈 덴 없니  많이 힘들었지  난 걱정 안 해도 돼  너만 괜찮으면 돼  가슴이 시릴 때  아무도 없을 땐  늘 여기로 오면 돼  어두운 방에서 홀로 누워  사랑하는 사람을  사랑할 수 없는 너를 위해  현실 속에 무너져 내리는 가슴을 잡고 또 길을 나서는 너를 위해 너의 발걸음이 들릴 때 웃으며 마중을 나가는 게 너에게 해줄 수 있는 나의 유일한 선물이었지 어디 아픈 덴 없니 많이 힘들었지 난 걱정 안 해도 돼 너만 괜찮으면 돼 가슴이 시릴 때 아무도 없을 땐 늘 여기로 오면 돼  여기로 오면 돼!!', '로이킴', SYSDATE, SYSDATE);
+VALUES(T_SEQ_BOARD.NEXTVAL, 
+'
+레전더리 워워어어워어
+', 
+'
+워우어어어어어 레전더리 워우워어ㅜ어
+', 
+'피파'
+,SYSDATE, SYSDATE);
 
 INSERT INTO T_BOARD (BNO, TITLE, CONTENT, WRITER)
 (SELECT T_SEQ_BOARD.NEXTVAL, TITLE, CONTENT, WRITER FROM T_BOARD);
