@@ -17,7 +17,7 @@
 	select {width: 25%;	display: inline;}
 	input[name='keyword'] {	width: 54%; display: inline;}
 	.search {	width: 20%;	margin-top: 5%; }
-		@media ( max-width : 918px) {
+		@media ( max-width : 736px) {
 			#searhForm { width: 100%;	}
 			.writer { display: none;}
 			.newDate {display: none;}
@@ -31,6 +31,11 @@
 				display: inline;
 			}
 		}
+	@media screen and (max-width: 480px) {
+		a.button.small {
+			width: 100%;
+		}
+	}
 	.page {justify-content: center;}
 	#pagination_prev {float: left;}
 	#pagination_next {float: right}
@@ -41,53 +46,18 @@
 	<!-- Wrapper -->
 	<div id="wrapper">
 
-		<!-- Header -->
-		<header id="header">
-
-			<!-- Logo -->
-			<div class="logo">
-				<a href="/" class="title"><strong>개발자들의 모임</strong> <span
-					class="extra">Hello World🤪</span></a>
-			</div>
-
-			<!-- Nav -->
-			<nav id="nav">
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="#" class="dropdown">Dropdown</a>
-						<ul>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Magna phasellus</a></li>
-							<li><a href="#">Etiam dolore nisl</a></li>
-							<li><a href="#">서브 메뉴</a>
-								<ul>
-									<li><a href="#">Lorem ipsum dolor</a></li>
-									<li><a href="#">Phasellus consequat</a></li>
-									<li><a href="#">Magna phasellus</a></li>
-									<li><a href="#">Etiam dolore nisl</a></li>
-									<li><a href="#">Veroeros feugiat</a></li>
-								</ul></li>
-							<li><a href="#">Veroeros feugiat</a></li>
-						</ul></li>
-					<li><a href="/generic">공지사항</a></li>
-					<li><a href="/board/list">자유게시판</a></li>
-					<li><a href="/elements">Elements</a></li>
-				</ul>
-			</nav>
-
-		</header>
+	<%@include file="../includes/header.jsp" %>
 
 		<!-- Main -->
 		<div id="main">
 
-			<!-- 검색바 -->
 			<!-- Content -->
 			<section class="main">
 				<div class="inner">
 					<c:forEach var="board" items="${list}" begin="0" end="0" varStatus="status">
 						<header class="major">
 							<span class="category">최신 글</span> <a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
-								${board.bno} </a>
+								No.${board.bno} </a>
 							<h2>
 								<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
 								${board.title}</a>
@@ -110,6 +80,11 @@
 							<c:set var="content1" value="${board.content}" />
 							<c:set var="content2" value="${fn:substring(content1, 1, 30)}" />
 							<p>${board.content} •••.</p>
+							<footer>
+									<ul class="actions special">
+										<li><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="button">Full Story</a></li>
+									</ul>
+							</footer>
 					</c:forEach>
 				</div>
 			</section>
@@ -119,10 +94,10 @@
 				<div class="posts">
 					<c:forEach var="board" items="${list}" begin="1" step="1">
 						<article>
-							<a href="#" class="image"><img src="/resources/images/bg/bg5.jpg" alt="" /></a>
+							<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image"><img src="/resources/images/bg/bg5.jpg" alt="" /></a>
 							<header>
 								<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
-									${board.bno}</a>
+									No.${board.bno}</a>
 								<h2>
 									<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
 									${board.title}</a>
@@ -133,7 +108,10 @@
 									</li>
 									<li><c:set var="updateDate1" value="${board.updateDate}" />
 										<c:set var="updateDate2" value="${fn:substring(updateDate1, 5, 10)}" /> 
-										수정일 : ${updateDate2}</li>
+										수정일 : ${updateDate2}
+									</li>
+								</ul>
+								<ul class="meta">
 									<li><a href="#" class="favorites">2,174</a></li>
 									<li><a href="#" class="comments">1,423</a></li>
 								</ul>
@@ -143,7 +121,7 @@
 								<c:set var="content2" value="${fn:substring(content1, 1, 30)}" />
 								${board.content} •••.
 							</p>
-							${board.writer}
+							작성자 : ${board.writer}
 							<footer>
 								<ul class="actions">
 									<li><a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="button">Full Story</a></li>
@@ -233,54 +211,10 @@
 			</section>
 		</div> <!-- main -->
 
-		<!-- Footer -->
-		<footer id="footer">
-			<div class="inner">
-				<section>
-					<h2>Y-Generation</h2>
-					<p>개발자 사이트의 블로그 입니다.</p>
-					<ul class="icons style2">
-						<li><a href="https://github.com/eight-corner" class="icon brands fa-github"> <span class="label">Github</span></a></li>
-						<li><a href="#" class="icon brands fa-facebook-f"> <span class="label">Facebook</span></a></li>
-						<li><a href="https://instagram.com" class="icon brands fa-instagram"> <span class="label">Instagram</span></a></li>
-						<li><a href="https://youtube.com" class="icon brands fa-youtube"> <span class="label">YouTube</span></a></li>
-					</ul>
-				</section>
-				<section>
-					<h2>문의하기</h2>
-					<form method="post" action="#">
-						<div class="fields">
-							<div class="field half">
-								<input type="text" name="name" id="name" placeholder="Name" />
-							</div>
-							<div class="field half">
-								<input type="email" name="email" id="email" placeholder="Email" />
-							</div>
-							<div class="field">
-								<textarea name="message" id="message" placeholder="Message"
-									rows="4"></textarea>
-							</div>
-						</div>
-						<ul class="actions">
-							<li><input type="submit" value="Send Message" /></li>
-						</ul>
-					</form>
-				</section>
-			</div>
-			<div class="copyright">
-				<p>&copy; 2021. Y-Generation Co. all rights reserved.</p>
-			</div>
-		</footer>
-
+ 
 	</div> <!-- wrapper -->
 
-	<!-- Scripts -->
-	<script src="/resources/assets/js/jquery.min.js"></script>
-	<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
-	<script src="/resources/assets/js/browser.min.js"></script>
-	<script src="/resources/assets/js/breakpoints.min.js"></script>
-	<script src="/resources/assets/js/util.js"></script>
-	<script src="/resources/assets/js/main.js"></script>
+	<%@include file="../includes/footer.jsp" %>
 </body>
 <script>
 	$("a.search").on("click", function(e) {

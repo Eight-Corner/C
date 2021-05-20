@@ -15,6 +15,7 @@
       <!-- Main -->
          <div id="main">
             <div class="wrapper">
+            <%@include file="../includes/header.jsp" %>
                <div class="inner">
 
                   <!-- Elements -->
@@ -59,12 +60,6 @@
                         </div>
                      </div>
                   </div> 
-      <!-- Scripts -->
-         <script src="/resources/assets/js/jquery.min.js"></script>
-         <script src="/resources/assets/js/jquery.dropotron.min.js"></script>
-         <script src="/resources/assets/js/browser.min.js"></script>
-         <script src="/resources/assets/js/breakpoints.min.js"></script>
-         <script src="/resources/assets/js/util.js"></script>
-         <script src="/resources/assets/js/main.js"></script>
+      <%@include file="../includes/footer.jsp" %>
    </body>
 </html>

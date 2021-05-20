@@ -14,9 +14,11 @@
       <link rel="stylesheet" href="/resources/assets/css/main.css" />
    </head>
    <body class="is-preload">
+   
       <!-- Main -->
          <div id="main">
             <div class="wrapper">
+   				<%@include file="../includes/header.jsp" %>
                <div class="inner">
 
                   <!-- Elements -->
@@ -71,30 +73,23 @@
                         </div>
                      </div>
                   </div> 
-      <!-- Scripts -->
-         <script src="/resources/assets/js/jquery.min.js"></script>
-         <script src="/resources/assets/js/jquery.dropotron.min.js"></script>
-         <script src="/resources/assets/js/browser.min.js"></script>
-         <script src="/resources/assets/js/breakpoints.min.js"></script>
-         <script src="/resources/assets/js/util.js"></script>
-         <script src="/resources/assets/js/main.js"></script>
-         <script src="/resources/assets/js/reply.js"></script>
+		<%@include file="../includes/footer.jsp" %>
    </body>
 <script src="/resources/assets/js/jquery.min.js"></script>
    <script>
    /* 테스트용 */
 	// console.log(replyService.name); 
-   
+/*    
    $(document).ready(function(){
  	 
 	  console.log("=========");
-	  console.log("JS TEST");
-	   
- 
+	  console.log("JS TEST"); 
+ */
+/*  
 	  replyService.get(41, function(data){
 		  console.log(data);
 	  }); 
-
+  */
 /* 	  
 		replyService.update({
 			 rno: 41,
@@ -127,6 +122,6 @@
 				  alert("RESULT : " + result);
 		  	});
      */
-  }); 
+//  }); 
    </script>
 </html>

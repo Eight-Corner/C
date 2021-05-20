@@ -14,44 +14,7 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Header -->
-				<header id="header">
-
-					<!-- Logo -->
-						<div class="logo">
-							<a href="/" class="title"><strong>개발자들의 모임</strong> <span class="extra">Hello World🤪</span></a>
-						</div>
-
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="/">Home</a></li>
-								<li>
-									<a href="#" class="dropdown">Dropdown</a>
-									<ul>
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
-										<li>
-											<a href="#">서브 메뉴</a>
-											<ul>
-												<li><a href="#">Lorem ipsum dolor</a></li>
-												<li><a href="#">Phasellus consequat</a></li>
-												<li><a href="#">Magna phasellus</a></li>
-												<li><a href="#">Etiam dolore nisl</a></li>
-												<li><a href="#">Veroeros feugiat</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
-									</ul>
-								</li>
-								<li><a href="/generic">공지사항</a></li>
-								<li><a href="/board/list">자유게시판</a></li>
-								<li><a href="/elements">Elements</a></li>
-							</ul>
-						</nav>
-
-				</header>
+			<%@include file="includes/header.jsp" %>
 
 				<!-- Main -->
 					<div id="main">
@@ -453,52 +416,7 @@ print 'It took ' + i + ' iterations to sort the deck.';
 
 					</div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<div class="inner">
-							<section>
-								<h2>Sed vitae consequat</h2>
-								<p>Ipsum dolor sit amet tempus adipiscing amet sed aliquam magna etiam magna feugiat cursus lorem nisi. Amet mauris vitae mi dapibus nulla dictum. Ipsum dolor sit amet tempus etiam adipiscing amet sed aliquam veroeros etiam feugiat veroeros aliquam feugiat cursus lorem nisi. Ut mauris vitae mi dapibus nulla dictum. Ipsum dolor sit amet tempus adipiscing tempus.</p>
-								<ul class="icons style2">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
-								</ul>
-							</section>
-							<section>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" /></li>
-									</ul>
-								</form>
-							</section>
-						</div>
-						<div class="copyright">
-							<p>&copy; Untitled. All rights reserved. Lorem ipsum dolor sit amet nullam.</p>
-						</div>
-					</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="/resources/assets/js/jquery.min.js"></script>
-			<script src="/resources/assets/js/jquery.dropotron.min.js"></script>
-			<script src="/resources/assets/js/browser.min.js"></script>
-			<script src="/resources/assets/js/breakpoints.min.js"></script>
-			<script src="/resources/assets/js/util.js"></script>
-			<script src="/resources/assets/js/main.js"></script>
-
+</div>
+			<%@include file="includes/footer.jsp" %>
 	</body>
 </html>

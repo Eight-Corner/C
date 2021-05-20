@@ -15,6 +15,7 @@
       <!-- Main -->
          <div id="main">
             <div class="wrapper">
+            <%@include file="../includes/header.jsp" %>
                <div class="inner">
 
                   <!-- Elements -->
