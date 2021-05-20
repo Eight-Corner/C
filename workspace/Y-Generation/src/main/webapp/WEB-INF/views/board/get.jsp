@@ -67,5 +67,20 @@
          <script src="/resources/assets/js/breakpoints.min.js"></script>
          <script src="/resources/assets/js/util.js"></script>
          <script src="/resources/assets/js/main.js"></script>
+         <script src="/resources/assets/js/reply.js"></script>
    </body>
+   <script>
+   $(document).ready(function(){
+	  // console.log(replyService.name); 
+	  console.log("=========");
+	  console.log("JS TEST");
+	  
+	  replyService.add(
+			  {reply: "JS TEST", replyer:"tester", bno:"${board.bno}"},
+			  function(result){
+				  alert("RESULT : " + result);
+			  	}
+			  )
+   });
+   </script>
 </html>

@@ -15,30 +15,29 @@ SELECT * FROM T_BOARD;
 
 INSERT INTO T_BOARD
 (BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE)
-VALUES(T_SEQ_BOARD.NEXTVAL, '멸공의 횃불', '1절
-아름다운 이 강산을 지키는 우리
-사나이 기백으로 오늘을 산다
-포탄의 불바다를 무릅쓰면서[2]
-고향 땅 부모형제 평화를 위해
-2절
-조국의 푸른 바다 지키는 우리
-젊음의 정열바쳐 오늘을 산다
-함포의 벼락불을 쏘아붙이며
-겨레의 생명선에 내일을 걸고
-3절
-자유의 푸른 하늘 지키는 우리
-충정과 투지로서 오늘을 산다
-번갯불 은빛 날개 구름을 뚫고
-찬란한 사명감에 날개를 편다
-4절
-조국의 빛난 얼을 지키는 우리
-자랑과 보람으로 오늘을 산다
-새 역사 창조하는 번영의 이 땅
-지키고 싸워 이겨 잘 살아가자
-후렴
-전우여 내 나라는 내가 지킨다
-멸공의 횃불 아래 목숨을 건다', '군가', SYSDATE, SYSDATE
-);
+VALUES(T_SEQ_BOARD.NEXTVAL, 'home', '화려한 불빛들  그리고 바쁜 일상들  뒤에 숨겨진  초라한 너의 뒷모습과  하고 싶은 일 해야만 하는 일  사이에서 고민하는  너의 무거운 어깨를 위해  너의 발걸음이 들릴 때  웃으며 마중을 나가는 게  너에게 해줄 수 있는  나의 유일한 선물이었지 어디 아픈 덴 없니  많이 힘들었지  난 걱정 안 해도 돼  너만 괜찮으면 돼  가슴이 시릴 때  아무도 없을 땐  늘 여기로 오면 돼  어두운 방에서 홀로 누워  사랑하는 사람을  사랑할 수 없는 너를 위해  현실 속에 무너져 내리는 가슴을 잡고 또 길을 나서는 너를 위해 너의 발걸음이 들릴 때 웃으며 마중을 나가는 게 너에게 해줄 수 있는 나의 유일한 선물이었지 어디 아픈 덴 없니 많이 힘들었지 난 걱정 안 해도 돼 너만 괜찮으면 돼 가슴이 시릴 때 아무도 없을 땐 늘 여기로 오면 돼  여기로 오면 돼!!', '로이킴', SYSDATE, SYSDATE);
 
 INSERT INTO T_BOARD (BNO, TITLE, CONTENT, WRITER)
 (SELECT T_SEQ_BOARD.NEXTVAL, TITLE, CONTENT, WRITER FROM T_BOARD);
+
+----------
+-- 댓글 테이블 추가
+CREATE SEQUENCE SEQ_REPLY;
+CREATE TABLE TBL_REPLY(
+	RNO NUMBER(10),
+	BNO NUMBER(10) NOT NULL,
+	REPLY VARCHAR2(1000) NOT NULL, -- 댓글 
+	REPLYER VARCHAR2(100) NOT NULL, -- 작성자
+	REPLYDATE DATE DEFAULT SYSDATE, -- 작성날짜 
+	UPDATEDATE DATE DEFAULT SYSDATE -- 수정날짜
+);
+
+ALTER TABLE TBL_REPLY ADD CONSTRAINT PK_REPLY PRIMARY KEY(RNO);
+-- ALTER TABLE TBL_REPLY DROP CONSTRAINT FK_REPLY;
+
+ALTER TABLE TBL_REPLY ADD CONSTRAINT FK_REPLY FOREIGN KEY(BNO)
+REFERENCES T_BOARD(BNO) ON DELETE CASCADE;
+
+SELECT * FROM TBL_REPLY;
+
+INSERT INTO TBL_REPLY (RNO, BNO, REPLY, REPLYER) VALUES (SEQ_REPLY.NEXTVAL, 1376250, '너무 좋은데용?!', '프로댓글러');

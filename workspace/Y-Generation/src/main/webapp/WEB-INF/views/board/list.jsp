@@ -158,8 +158,8 @@
 				<footer class="major">
 					<ul class="pagination" id="pagination_prev">
 						<c:if test="${pageMaker.prev}">
-							<li><a class="previous" id="changePage" href="${1}">First</a></li>
-							<li><a class="previous" id="changePage" href="${pageMaker.startPage - 1}">PREV</a></li>
+							<li><a class="changePage" id="previous" href="${1}">&lt;&lt;First</a></li>
+							<li><a class="changePage" id="previous" href="${pageMaker.startPage - 1}">&lt;PREV</a></li>
 						</c:if>
 					</ul>
 					<ul class="pagination">
@@ -169,15 +169,15 @@
 									<li><a class="page active">${num}</a></li>
 								</c:when>
 								<c:otherwise>
-									<li><a id="changePage" class="page" href="${num}">${num}</a></li>
+									<li><a class="changePage" id="page" href="${num}">${num}</a></li>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 					</ul>
 					<ul class="pagination" id="pagination_next">
 						<c:if test="${pageMaker.next}">
-							<li><a id="changePage" class="next" href="${pageMaker.endPage + 1}">NEXT</a></li>
-							<li><a id="changePage" class="next" href="${pageMaker.realEnd}">END</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">NEXT&gt;</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END&gt;&gt;</a></li>
 						</c:if>
 					</ul>
 				</footer>
@@ -187,8 +187,8 @@
 				<footer class="major">
 					<ul class="pagination" id="pagination_prev">
 						<c:if test="${pageMaker.cri.pageNum > 1}">
-							<li><a class="previous" id="changePage" href="${1}">First</a></li>
-							<li><a class="previous" id="changePage" href="${pageMaker.cri.pageNum - 1}">PREV</a></li>
+							<li><a id="previous" class="changePage" href="${1}">&lt;&lt;First</a></li>
+							<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">&lt;PREV</a></li>
 						</c:if>
 					</ul>
 					<ul class="pagination">
@@ -196,8 +196,8 @@
 					</ul>
 					<ul class="pagination" id="pagination_next">
 						<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-							<li><a id="changePage" class="next" href="${pageMaker.cri.pageNum + 1}">NEXT</a></li>
-							<li><a id="changePage" class="next" href="${pageMaker.realEnd}">END</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">NEXT&gt;</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END&gt;&gt;</a></li>
 						</c:if>
 					</ul>
 				</footer>
@@ -296,13 +296,13 @@
 		searchForm.submit();
 	})
 
-	$("#changePage").on("click", function(e) {
-		e.preventDefault();
-		var actionForm = $("#actionForm");
-		var pageNum = $(this).attr("href");
-		actionForm.find("input[name='pageNum']").val(pageNum);
-		actionForm.submit();
-	})
+		$(".changePage").on("click", function(e){
+			e.preventDefault();
+			var actionForm = $("#actionForm");
+			var pageNum = $(this).attr("href");
+			actionForm.find("input[name='pageNum']").val(pageNum);
+			actionForm.submit();
+		})
 
 	//alert("${result}");
 	var result = "${result}";
