@@ -34,8 +34,8 @@
 										</li>
 									</ul>
 								</li>
-								<li><a href="../account/signup">Sign Up</a></li>
-								<li><a href="../account/signin">Sign in</a></li>
+								<li><a href="/account/signup">Sign Up</a></li>
+								<li><a href="/account/signin">Sign in</a></li>
 								<li><a href="/elements">Elements</a></li>
 							</ul>
 						</nav>

@@ -23,7 +23,7 @@
 
                   <!-- Elements -->
                 <header class="major">
-                   <h1>Board</h1>
+                   <h2>Board</h2>
                    <p>게시글 등록</p>
                 </header>
                     <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>

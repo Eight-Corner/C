@@ -12,7 +12,7 @@
 					<div class="inner">
 						<section>
 							<h2>Y-Generation </h2>
-							<p> 개발자 사이트의 블로그 입니다.</p>
+							<p> 개발자들의 포럼</p>
 							<ul class="icons style2">
 								<li><a href="https://github.com/eight-corner" class="icon brands fa-github">
 									<span class="label">Github</span></a></li>

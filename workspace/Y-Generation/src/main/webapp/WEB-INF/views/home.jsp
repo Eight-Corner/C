@@ -58,9 +58,9 @@
 						<article class="full">
 							<img src="/resources/images/bg/bg1.jpg" alt="" data-position="center" />
 							<div class="content">
-								<h2><a href="#">Hello World </a></h2>
+								<h2><a href="#">Announcements</a></h2>
 								<p> 
-									Hello World. 
+									News & Information. 
 								</p>
 								<ul class="actions special">
 									<li><a href="#" class="button">Full Story</a></li>
@@ -72,8 +72,8 @@
 						<article class="half">
 							<img src="/resources/images/bg/bg2.jpg" alt="" data-position="center" />
 							<div class="content">
-								<h2><a href="#">Aliquam veroeros</a></h2>
-								<p>Dolor sit amet tempus adipiscing amet sed aliquam feugiat veroeros lorem ipsum dolor sit amet consequat.</p>
+								<h2><a href="#">General Discussion</a></h2>
+								<p>Talk about anything related to the community or modding in general!</p>
 								<ul class="actions special">
 									<li><a href="#" class="button">Full Story</a></li>
 								</ul>
@@ -84,8 +84,8 @@
 						<article class="half">
 							<img src="/resources/images/bg/bg3.jpg" alt="" data-position="center" />
 							<div class="content">
-								<h2><a href="#">Tempus sed magna</a></h2>
-								<p>Dolor sit amet tempus adipiscing amet sed aliquam feugiat veroeros lorem ipsum dolor sit amet consequat.</p>
+								<h2><a href="#">Off Topic</a></h2>
+								<p>Talk about anything on your mind.</p>
 								<ul class="actions special">
 									<li><a href="#" class="button">Full Story</a></li>
 								</ul>
