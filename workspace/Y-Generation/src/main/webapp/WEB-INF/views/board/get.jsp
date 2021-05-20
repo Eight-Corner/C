@@ -4,52 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
-<script src="/resources/assets/js/jquery.min.js"></script>
-   <script>
-   /* 테스트용 */
-	  // console.log(replyService.name); 
-//   $(document).ready(function(){
-/* 	 
-	  console.log("=========");
-	  console.log("JS TEST");
-	   */
-	  /* replyService.get(101, function(data){
-		  console.log(data);
-	  }); */
-/* 	  
-		replyService.update({
-			 rno: 101,
-			 bno: "${board.bno}",
-			 reply: "js Modify Reply...."
-		 	 }, function(result) {
-				alert("MODIFY SUCCESS...");
-		}); 
-	  */
-/* 	  
-	  replyService.remove(102, function(count){
-		  console.log(count);
-		  if(count==="success"){
-			  alert("REMOVED");
-		  }
-	  }, function(err){
-		  alert("ERROR....");
-	  }); 
-*/
-	  
-/* 	   replyService.getList({bno: "${board.bno}", page:1},
-			  function(data){
-		  console.log(data)
-	  })  */
-	  /* 
-	  replyService.add(
-			  {reply: "JS TEST", replyer:"tester", bno:"${board.bno}"},
-			  function(result){
-				  alert("RESULT : " + result);
-		  	});
-   */
- // 
- // }); 
-   </script>
+
    <head>
       <title>Board</title>
       <meta charset="utf-8" />
@@ -125,5 +80,53 @@
          <script src="/resources/assets/js/main.js"></script>
          <script src="/resources/assets/js/reply.js"></script>
    </body>
+<script src="/resources/assets/js/jquery.min.js"></script>
+   <script>
+   /* 테스트용 */
+	// console.log(replyService.name); 
+   
+   $(document).ready(function(){
+ 	 
+	  console.log("=========");
+	  console.log("JS TEST");
+	   
+ 
+	  replyService.get(41, function(data){
+		  console.log(data);
+	  }); 
 
+/* 	  
+		replyService.update({
+			 rno: 41,
+			 bno: "${board.bno}",
+			 reply: "js Modify Reply...."
+		 	 }, function(result) {
+				alert("MODIFY SUCCESS...");
+		}); 
+  */
+/* 	  
+	  replyService.remove(102, function(count){
+		  console.log(count);
+		  if(count==="success"){
+			  alert("REMOVED");
+		  }
+	  }, function(err){
+		  alert("ERROR....");
+	  }); 
+*/
+	  
+/* 	   replyService.getList({bno: "${board.bno}", page:1},
+			  function(data){
+		  console.log(data)
+	  })  
+*/
+/* 	 
+	  replyService.add(
+			  {reply: "JS TEST", replyer:"tester", bno:"${board.bno}"},
+			  function(result){
+				  alert("RESULT : " + result);
+		  	});
+     */
+  }); 
+   </script>
 </html>
