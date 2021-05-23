@@ -15,6 +15,7 @@
       <link rel="stylesheet" href="/resources/assets/css/main.css" />
       <style>
       	.line{border-bottom: 1px solid #dbdbdb;}
+      	.date{font-size: 12px; top: -60px; position: relative;}
       </style>
    </head>
    <body class="is-preload">
@@ -211,10 +212,14 @@
 	                     //value를 가져와 사용할 수 있다.
 	                     //만약 value를 수정하고 싶다면 해당 태그객체.data("변수명","새로운 값");
 	                     for(let i=0, len=list.length; i<len; i++){
+                    	 	var rDate = list[i].replyDate.substr(0,16);
+                    	 	var uDate = list[i].updateDate.substr(0,16);
 	                        str += "<li data-rno='" + list[i].rno + "'>";
 	                        str += "<strong>" + list[i].replyer + "</strong>";
 	                        str += "<p class='reply" + list[i].rno + "'>" + list[i].reply + "</p>";
 	                        str += "<div style='text-align:right;'>";
+	                        str += "<span class='date'><img src='/resources/images/value_date_icon.png' height='13px;' weight='13px'>";
+	                        str += "작성일: "+ rDate + " | 수정일: "+ uDate +"</span>";
 	                        str += "<a class='modify' href='" + list[i].rno + "'>수정</a>"
 	                        str += "<a class='finish' href='" + list[i].rno + "' style='display:none;'>수정완료</a>"
 	                        str += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -230,7 +235,7 @@
 			e.preventDefault();
 			var rnoValue = $(this).attr("href");
 			
-			replyService.remove(rnoValue, function(e) {
+			replyService.remove(rnoValue, function(result) {
 				alert(result);
 				showList(pageNum);
 			});
