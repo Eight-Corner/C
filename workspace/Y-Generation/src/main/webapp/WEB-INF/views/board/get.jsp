@@ -16,6 +16,7 @@
       <style>
       	.line{border-bottom: 1px solid #dbdbdb;}
       	.date{font-size: 12px; top: -60px; position: relative;}
+      	.pagination{list-style: none !important;}
       </style>
    </head>
    <body class="is-preload">
@@ -30,8 +31,7 @@
 
 	                  <!-- Elements -->
 	                <header class="major">
-	                   <h2>Board</h2>
-	                   <p>게시글 등록</p>
+	                   <h2>Off Topic</h2>
 	                </header>
 	                    <h3><a href="/board/list${cri.getListLink()}" class="button small">목록 보기</a></h3>
 	                  <div class="content">

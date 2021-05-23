@@ -157,8 +157,8 @@
 					</ul>
 					<ul class="pagination" id="pagination_next">
 						<c:if test="${pageMaker.next}">
-							<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">NEXT&gt;</a></li>
-							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END&gt;&gt;</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.endPage + 1}">NEXT</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
 						</c:if>
 					</ul>
 				</footer>
@@ -168,8 +168,8 @@
 				<footer class="major">
 					<ul class="pagination" id="pagination_prev">
 						<c:if test="${pageMaker.cri.pageNum > 1}">
-							<li><a id="previous" class="changePage" href="${1}">&lt;&lt;First</a></li>
-							<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">&lt;PREV</a></li>
+							<li><a id="previous" class="changePage" href="${1}">First</a></li>
+							<li><a id="previous" class="changePage" href="${pageMaker.cri.pageNum - 1}">PREV</a></li>
 						</c:if>
 					</ul>
 					<ul class="pagination">
@@ -177,8 +177,8 @@
 					</ul>
 					<ul class="pagination" id="pagination_next">
 						<c:if test="${pageMaker.cri.pageNum < pageMaker.realEnd}">
-							<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">NEXT&gt;</a></li>
-							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END&gt;&gt;</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.cri.pageNum + 1}">NEXT</a></li>
+							<li><a class="changePage" id="next" href="${pageMaker.realEnd}">END</a></li>
 						</c:if>
 					</ul>
 				</footer>
@@ -204,7 +204,7 @@
 								<option value="TCW" ${pageMaker.cri.type == 'TCW' ? 'selected':''}>전체</option>
 							</select> 
 							<input id="keyword" type="text" name="keyword" value="${pageMaker.cri.keyword}"> 
-							<a href="javascript:void(0)" class="search button primary icon solid fa-search">검색</a>
+							<a href="javascript:void(0)" style="top: -2px;" class="search button primary icon solid fa-search">검색</a>
 						</div>
 					</div>
 				</div>
