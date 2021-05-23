@@ -17,12 +17,12 @@ INSERT INTO T_BOARD
 (BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE)
 VALUES(T_SEQ_BOARD.NEXTVAL, 
 '
-안녕하세요 !!~
+band 쵕모
 ', 
 '
-안녕하심까!@ 잘 부탁드림다!
+band check band check 
 ', 
-'newbie'
+'창모'
 ,SYSDATE, SYSDATE);
 
 INSERT INTO T_BOARD (BNO, TITLE, CONTENT, WRITER)
