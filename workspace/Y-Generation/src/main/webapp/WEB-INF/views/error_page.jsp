@@ -43,8 +43,8 @@
 				    </div>
 			    </div>
 			</section>
-		</div>
-	</div>
+		</div> <!-- div main end -->
+	</div> <!-- div wrapper end -->
 	<%@include file="includes/footer.jsp" %>
 </body>
 </html>

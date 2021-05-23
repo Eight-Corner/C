@@ -15,21 +15,19 @@
 		<![CDATA[ 
 			SELECT RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
 			FROM 
-				( SELECT /*+ INDEX(TBL_REPLY IDX_REPLY) */ 
+				( 
+				SELECT /*+ INDEX(TBL_REPLY PK_REPLY) */ 
 				ROWNUM RN, RNO, BNO, REPLY, REPLYER, REPLYDATE, UPDATEDATE 
 				FROM TBL_REPLY 
 				WHERE BNO = #{bno} 
-				AND RNO > 0 
 				AND ROWNUM <= #{cri.pageNum} * #{cri.amount} 
 				)
 			WHERE RN > (#{cri.pageNum} - 1) * #{cri.amount}
 		]]>
 	</select>
 	
-	<select id="getCountBno" resultType="int">
-		<![CDATA[ 
+	<select id="getTotal" resultType="int">
 			SELECT COUNT(RNO) FROM TBL_REPLY WHERE BNO = #{bno}
-		]]>
 	</select>
 	
 	<delete id="delete">

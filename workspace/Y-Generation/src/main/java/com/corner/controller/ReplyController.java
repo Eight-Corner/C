@@ -1,7 +1,5 @@
 package com.corner.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,16 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.corner.domain.Criteria;
+import com.corner.domain.ReplyPageDTO;
 import com.corner.domain.ReplyVO;
 import com.corner.service.ReplyService;
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
 
 import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 
 @RequestMapping("/replies/")
 @RestController
-@Log4j
 public class ReplyController {
 	
 	@Setter(onMethod_ = @Autowired)
@@ -42,11 +38,11 @@ public class ReplyController {
 			MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE
 	})
-	public ResponseEntity<List<ReplyVO>> getList(
+	public ResponseEntity<ReplyPageDTO> getList(
 			@PathVariable("page") int page,
 			@PathVariable("bno") Long bno){
 		Criteria cri = new Criteria(page, 10);
-		return new ResponseEntity<List<ReplyVO>>(service.getList(cri, bno), HttpStatus.OK);
+		return new ResponseEntity<ReplyPageDTO>(service.getListWithPaging(cri, bno), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/{rno}", produces = {

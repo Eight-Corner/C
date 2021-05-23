@@ -56,7 +56,8 @@
 				<div class="inner">
 					<c:forEach var="board" items="${list}" begin="0" end="0" varStatus="status">
 						<header class="major">
-							<span class="category">최신 글</span> <a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
+							<span class="category">최신 글</span> 
+							<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
 								No.${board.bno} </a>
 							<h2>
 								<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">
