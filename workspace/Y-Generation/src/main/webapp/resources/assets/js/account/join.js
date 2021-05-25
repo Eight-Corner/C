@@ -170,7 +170,7 @@ function formSubmit() {
 	
 
 	/* 이메일 인증번호 요청 */
-	function EmailCheck() {
+/*	function EmailCheck() {
 			var email = $("input[name='emailAddress']").val();
 			alert('잠시만 기다려주세요..');
 		check = false;
@@ -195,11 +195,11 @@ function formSubmit() {
 			});
 		}
 	}
-	
+*/	
  
 					/* 인증번호 7자리 */
 				
-				
+	/*			
 		var code = ""; // 코드 
 	function EmailCheck2(){
 			var email = $("input[name='emailAddress']").val();
@@ -223,7 +223,7 @@ function formSubmit() {
 					console.log("ERROR");
 				}
 			});
-		}
+		}*/
 		
 		function verifyCheck(){
 			var verify = $("#verify").val();

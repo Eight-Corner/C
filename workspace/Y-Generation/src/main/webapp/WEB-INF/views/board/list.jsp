@@ -73,7 +73,7 @@
 									수정일 : ${updateDate2}
 								</li>
 								<li><a href="#" class="favorites">2,174</a></li>
-								<li><a href="#" class="comments">1,423</a></li>
+								<li><a href="#" class="comments">${board.replyCnt}</a></li>
 							</ul>
 						</header>
 						<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image main">
@@ -114,7 +114,7 @@
 								</ul>
 								<ul class="meta">
 									<li><a href="#" class="favorites">2,174</a></li>
-									<li><a href="#" class="comments">1,423</a></li>
+									<li><a href="#" class="comments">${board.replyCnt}</a></li>
 								</ul>
 							</header>
 							<p>

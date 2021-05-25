@@ -20,5 +20,10 @@ public class MemberServiceImple implements MemberService {
 	public void register(MemberVO vo) {
 		mapper.register(vo);
 	}
+	
+	@Override
+	public MemberVO login(MemberVO vo) throws Exception {
+		return mapper.login(vo);
+	}
 
 }

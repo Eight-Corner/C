@@ -31,9 +31,9 @@
 	</sql>
 	
 	<select id="getListWithPaging" resultType="com.corner.domain.BoardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE 
+		SELECT BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE, REPLYCNT 
 		FROM 
-			(SELECT /*+ INDEX_DESC(T_BOARD T_BOARD_PK) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE
+			(SELECT /*+ INDEX_DESC(T_BOARD T_BOARD_PK) */ ROWNUM RN, BNO, TITLE, CONTENT, WRITER, NEWDATE, UPDATEDATE, REPLYCNT 
 			FROM T_BOARD
 			WHERE 
 				<include refid="criteria"/>
@@ -79,5 +79,10 @@
 		WHERE BNO = #{bno}
 	</update>
 	
+	<update id="updateReplyCnt">
+		UPDATE T_BOARD 
+		SET REPLYCNT = REPLYCNT + #{amount} 
+		WHERE BNO = #{bno}
+	</update>
 
 </mapper>

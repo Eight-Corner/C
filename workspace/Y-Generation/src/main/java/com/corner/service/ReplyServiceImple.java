@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.corner.domain.Criteria;
 import com.corner.domain.ReplyPageDTO;
 import com.corner.domain.ReplyVO;
+import com.corner.mapper.BoardMapper;
 import com.corner.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
@@ -19,11 +21,15 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class ReplyServiceImple implements ReplyService {
 	
-	@Setter(onMethod_ = @Autowired)
 	public ReplyMapper mapper;
+	
+	private BoardMapper boardMapper;
 
+	@Transactional
 	@Override
 	public int register(ReplyVO reply) {
+		log.info("register .......... " + reply);
+		boardMapper.updateReplyCnt(reply.getBno(), 1);
 		return mapper.insert(reply);
 	}
 
@@ -37,8 +43,11 @@ public class ReplyServiceImple implements ReplyService {
 		return mapper.update(reply);
 	}
 
+	@Transactional
 	@Override
 	public int remove(Long rno) {
+		log.info("remove............" + rno);
+		boardMapper.updateReplyCnt(mapper.read(rno).getBno(), -1);
 		return mapper.delete(rno);
 	}
 

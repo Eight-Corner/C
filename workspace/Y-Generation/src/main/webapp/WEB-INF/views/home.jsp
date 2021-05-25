@@ -58,12 +58,12 @@
 						<article class="full">
 							<img src="/resources/images/bg/bg1.jpg" alt="" data-position="center" />
 							<div class="content">
-								<h2><a href="#">Announcements</a></h2>
+								<h2><a href="/generic">Announcements</a></h2>
 								<p> 
 									News & Information. 
 								</p>
 								<ul class="actions special">
-									<li><a href="#" class="button">Full Story</a></li>
+									<li><a href="/generic" class="button">Full Story</a></li>
 								</ul>
 							</div>
 						</article>
@@ -75,7 +75,7 @@
 								<h2><a href="#">General Discussion</a></h2>
 								<p>Talk about anything related to the community or modding in general!</p>
 								<ul class="actions special">
-									<li><a href="#" class="button">Full Story</a></li>
+									<li><a href="/generic" class="button">Full Story</a></li>
 								</ul>
 							</div>
 						</article>
@@ -87,7 +87,7 @@
 								<h2><a href="#">Off Topic</a></h2>
 								<p>Talk about anything on your mind.</p>
 								<ul class="actions special">
-									<li><a href="#" class="button">Full Story</a></li>
+									<li><a href="/board/list" class="button">Full Story</a></li>
 								</ul>
 							</div>
 						</article>
@@ -118,7 +118,7 @@
 											수정일 : ${updateDate2}
 										</li>
 										<li><a href="#" class="favorites">2,174</a></li>
-										<li><a href="#" class="comments">1,423</a></li>
+										<li><a href="#" class="comments">${board.replyCnt}</a></li>
 									</ul>
 								</header>
 								<a href="/board/get?bno=${board.bno}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}" class="image main">
@@ -159,7 +159,7 @@
 										</ul>
 										<ul class="meta">
 											<li><a href="#" class="favorites">2,174</a></li>
-											<li><a href="#" class="comments">1,423</a></li>
+											<li><a href="#" class="comments">${board.replyCnt}</a></li>
 										</ul>
 									</header>
 									<p>

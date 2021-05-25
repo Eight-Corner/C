@@ -6,4 +6,12 @@
 		INSERT INTO TBL_MEMBER (USERNAME, PASSWORD, EMAILADDRESS) 
 		VALUES (#{username}, #{password}, #{emailAddress})
 	</insert>
+	
+	<select id="login" resultType="com.corner.domain.MemberVO">
+		SELECT USERNAME, PASSWORD 
+		FROM TBL_MEMBER 
+		WHERE USERNAME = #{userName} 
+		AND PASSWORD = #{password}
+	</select>
+	
 </mapper>

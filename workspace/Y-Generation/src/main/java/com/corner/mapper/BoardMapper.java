@@ -2,6 +2,8 @@ package com.corner.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.corner.domain.BoardVO;
 import com.corner.domain.Criteria;
 
@@ -22,5 +24,6 @@ public interface BoardMapper {
 	
 	public int update(BoardVO board);
 	
+	public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
 	
 }
