@@ -79,7 +79,7 @@
 	                           </ul>
 	                           <ul class="icons">
 		                           <li>
-		                           		<span class="icon solid fa-envelope"></span>
+		                           		<span class="icon solid fa-comments"></span>
 		                           		<strong>댓글</strong>
 		                           </li>
 	                           </ul>
